@@ -21,44 +21,66 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Getting Started
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP \>= 7.3
+- Composer
+- Node.js & npm
+- MySQL or any other supported database
 
-## Laravel Sponsors
+### Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/programmerstilesj/nyt-api.git
+    cd nyt-api
+    ```
 
-### Premium Partners
+2. **Install dependencies**:
+    ```sh
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3. **Copy the `.env.example` file to `.env`**:
+    ```sh
+    cp .env.example .env
+    ```
 
-## Contributing
+4. **Generate an application key**:
+    ```sh
+    php artisan key:generate
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Set up the NYT API key and base URL in the `.env` file**:
+    ```env
+    NYT_API_KEY=your_nyt_api_key
+    NYT_BASE_URL=https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json
+    ```
 
-## Code of Conduct
+### Running the Application
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Start the development server**:
+    ```sh
+    php artisan serve
+    ```
 
-## Security Vulnerabilities
+2. **Access the application**:
+   Open your browser and go to `http://localhost:8000/api/v1/nyt/best-sellers`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Calling the Endpoint
 
-## License
+To call the `api/v1/nyt/best-sellers` endpoint, you can use a tool like `curl` or Postman. 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Example using `curl`**:
+    ```sh
+    curl -X GET "http://localhost:8000/api/v1/nyt/best-sellers?author=John%20Doe" -H "Accept: application/json"
+    ```
+
+
+### Running Tests
+Run the tests:
+```sh
+php artisan test
+```
